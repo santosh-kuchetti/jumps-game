@@ -1,6 +1,6 @@
 {
   "name": "jumpybumpy",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -16,7 +16,7 @@
     "react-dom": "^18.2.0",
     "react-native": "0.73.1",
     "react-native-gesture-handler": "^2.14.0",
-    "react-native-safe-area-context": "^4.8.1",
+    "react-native-safe-area-context": "^4.8.2",
     "react-native-screens": "^3.29.0",
     "react-native-web": "^0.19.9",
     "react-navigation-shared-element": "^3.1.3"

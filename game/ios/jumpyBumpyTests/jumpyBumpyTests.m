@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface jumpyBumpyTests : XCTestCase
+@interface jumpybumpyTests : XCTestCase
 
 @end
 
-@implementation jumpyBumpyTests
+@implementation jumpybumpyTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {
