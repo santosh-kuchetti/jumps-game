@@ -17,6 +17,8 @@ import {
   useColorScheme,
   View,
   TouchableWithoutFeedback,
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -28,6 +30,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import Ball from './components/Ball';
 import Obstracle from './components/Obstracle';
+const reload = require('./assets/images/reload.png');
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -36,7 +39,7 @@ type SectionProps = PropsWithChildren<{
 function App(): React.JSX.Element {
   const width: number = Dimensions.get('window').width;
   const height: number = Dimensions.get('window').height;
-const isFirstRender = useRef(true);
+  const isFirstRender = useRef(true);
   const ballLeft: number = width / 2;
 
   const [ballBottom, setBallBottom] = useState<number>(height / 2);
@@ -73,7 +76,6 @@ const isFirstRender = useRef(true);
 
   const jump = () => {
     if (!isGameOver && ballBottom < height) {
-      console.log('ballBottom', ballBottom);
       setBallBottom(prev => prev + 50);
     }
   };
@@ -106,17 +108,23 @@ const isFirstRender = useRef(true);
     }
   }, [obstracleTwoLeft]);
 
+  const restartGame = () => {
+    setBallBottom(height / 2);
+    setObstracleOneLeft(width);
+    setObstracleTwoLeft(width + width / 2 + 30);
+    setObstracleOneNegHeight(0);
+    setObstracleTwoNegHeight(0);
+    setIsGameOver(false);
+  };
+
   const gameOver = () => {
     clearInterval(gravityId);
     clearInterval(obstracleOneLeftId);
     clearInterval(obstracleTwoLeftId);
     setIsGameOver(true);
-    console.log('gameBoom');
   };
 
   useEffect(() => {
-    // console.log(height, width);
-    console.log(obstracleOneNegHeight + obstracleHeight);
     if (
       ((ballBottom < obstracleOneNegHeight + obstracleHeight + 30 ||
         ballBottom > obstracleOneNegHeight + obstracleHeight + gap) &&
@@ -151,6 +159,11 @@ const isFirstRender = useRef(true);
           color="green"
           randomHeight={obstracleTwoNegHeight}
         />
+        {isGameOver && (
+          <TouchableOpacity onPress={restartGame}>
+            <Image source={reload} />
+          </TouchableOpacity>
+        )}
       </SafeAreaView>
     </TouchableWithoutFeedback>
   );
