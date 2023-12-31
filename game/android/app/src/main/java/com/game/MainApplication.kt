@@ -1,4 +1,4 @@
-package com.game
+package com.jumpybump
 
 import android.app.Application
 import com.facebook.react.PackageList

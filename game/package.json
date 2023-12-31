@@ -1,6 +1,6 @@
 {
-  "name": "jumpybumpy",
-  "version": "0.0.6",
+  "name": "jumpybump",
+  "version": "0.0.4",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
